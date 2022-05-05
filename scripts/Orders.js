@@ -1,8 +1,8 @@
-import { getOrders } from "./database.js"
-import { getMetals } from "./database.js"
-import { getSizes } from "./database.js"
-import { getStyles } from "./database.js"
-import { getTypes } from "./database.js"
+import { getOrders } from "./dataAccess.js"
+import { getMetals } from "./dataAccess.js"
+import { getSizes } from "./dataAccess.js"
+import { getStyles } from "./dataAccess.js"
+import { getTypes } from "./dataAccess.js"
 
 const metals = getMetals()
 const sizes = getSizes()
@@ -67,10 +67,7 @@ const buildOrderListItem = (order) => {
     </li>`
 }
 
-
-
 // Remember that the function you pass to find() must return true/false
-
 
 export const Orders = () => {
     /*

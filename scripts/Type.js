@@ -1,5 +1,5 @@
 //import data 
-import { getTypes, setType, getTempState } from "./database.js";
+import { getTypes, setType, getTempState } from "./dataAccess.js"
 
 //assign data to variable
 const types = getTypes()

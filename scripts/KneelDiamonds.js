@@ -4,8 +4,8 @@ import { JewelryStyles } from "./JewelryStyles.js"
 import { Orders } from "./Orders.js"
 import { Metals } from "./Metals.js"
 import { Types } from "./Type.js"
-import { addCustomOrder } from "./database.js"
-import { getTempState } from "./database.js"
+import { addCustomOrder } from "./dataAccess.js"
+import { getTempState } from "./dataAccess.js"
 
 document.addEventListener(
     "click",

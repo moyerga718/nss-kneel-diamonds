@@ -1,4 +1,4 @@
-import { getMetals, setMetal, getTempState } from "./database.js"
+import { getMetals, setMetal, getTempState } from "./dataAccess.js"
 
 const metals = getMetals()
 
