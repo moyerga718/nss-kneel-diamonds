@@ -38,3 +38,7 @@ ul {
 }
 */
 
+.type-button-list {
+  display: flex;
+}
+

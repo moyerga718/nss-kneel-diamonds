@@ -3,13 +3,20 @@ import { DiamondSizes } from "./DiamondSizes.js"
 import { JewelryStyles } from "./JewelryStyles.js"
 import { Orders } from "./Orders.js"
 import { Metals } from "./Metals.js"
+import { Types } from "./Type.js"
 import { addCustomOrder } from "./database.js"
+import { getTempState } from "./database.js"
 
 document.addEventListener(
     "click",
     (event) => {
         if (event.target.id === "orderButton") {
-            addCustomOrder()
+            let tempState = getTempState()
+            if (tempState.metalId > 0 && tempState.sizeId > 0 && tempState.styleId > 0 && tempState.typeId > 0) {
+                addCustomOrder()
+            } else {
+                window.alert("Please select one option from each category")
+            }
         }
     }
 )
@@ -30,6 +37,9 @@ export const KneelDiamonds = () => {
             <section class="choices__styles options">
                 <h2>Styles</h2>
                 ${JewelryStyles()}
+            </section>
+            <section class="type-button-container">
+                ${Types()}
             </section>
         </article>
 

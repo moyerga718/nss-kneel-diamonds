@@ -2,10 +2,12 @@ import { getOrders } from "./database.js"
 import { getMetals } from "./database.js"
 import { getSizes } from "./database.js"
 import { getStyles } from "./database.js"
+import { getTypes } from "./database.js"
 
 const metals = getMetals()
 const sizes = getSizes()
 const styles = getStyles()
+const types = getTypes()
 
 const findMetalPrice = (order) => {
     const foundMetal = metals.find(
@@ -34,11 +36,21 @@ const findStylePrice = (order) => {
     return foundStyle.price
 }
 
+const findTypePrice = (order) => {
+    const foundType = types.find(
+        (type) => {
+            return type.id === order.typeId 
+        }
+    )
+    return foundType.priceFactor
+}
+
 const calcTotalPrice = (order) => {
     let metalPrice = findMetalPrice(order)
     let sizePrice = findSizePrice(order)
     let stylePrice = findStylePrice(order)
-    const totalPrice = metalPrice + sizePrice + stylePrice
+    let typePriceFactor = findTypePrice(order)
+    const totalPrice = (metalPrice + sizePrice + stylePrice) * typePriceFactor
     return totalPrice
 }
 
@@ -69,7 +81,12 @@ export const Orders = () => {
 
     let html = "<ul>"
 
-    const listItems = orders.map(buildOrderListItem)
+    const listItems = orders.map(
+        (order) => {
+            if (order.id > 0) {
+                return buildOrderListItem(order)
+            }
+        })
 
     html += listItems.join("")
     html += "</ul>"
